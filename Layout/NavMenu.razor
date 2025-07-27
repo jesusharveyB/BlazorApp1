@@ -1,4 +1,7 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject IJSRuntime JS
+@inherits LayoutComponentBase
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">BlazorApp1</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -7,7 +10,7 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass nav-scrollable">
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -30,6 +33,11 @@
             </NavLink>
         </div>
     </nav>
+
+    <div class="theme-toggle px-3 py-2">
+        <button class="btn btn-sm btn-outline-light me-2" @onclick="CambiarTemaOscuro">🖤 Oscuro</button>
+        <button class="btn btn-sm btn-outline-danger" @onclick="CambiarTemaRojo">🔴 Rojo</button>
+    </div>
 </div>
 
 @code {
@@ -41,4 +49,12 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+    private async Task CambiarTema(string tema)
+    {
+        await JS.InvokeVoidAsync("cambiarTema", tema);
+    }
+
+    private async Task CambiarTemaOscuro() => await CambiarTema("dark");
+    private async Task CambiarTemaRojo() => await CambiarTema("red");
 }

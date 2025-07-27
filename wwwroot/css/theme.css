@@ -1,0 +1,32 @@
+﻿/* Tema oscuro */
+body.dark {
+    background-color: #121212;
+    color: white;
+}
+
+    body.dark .navbar {
+        background-color: #1f1f1f;
+    }
+
+    body.dark .nav-link {
+        color: white;
+    }
+
+/* Tema rojo */
+body.red {
+    background-color: #8B0000;
+    color: white;
+}
+
+    body.red .navbar {
+        background-color: #660000;
+    }
+
+    body.red .nav-link {
+        color: #ffdddd;
+    }
+
+/* Transiciones suaves */
+.navbar, .nav-link, .table, .btn, body {
+    transition: all 0.3s ease-in-out;
+}
